@@ -13,4 +13,9 @@ public class HealthController {
         return new ResponseEntity<>("pong", HttpStatus.OK);
     }
 
+    @RequestMapping("/test")
+    public ResponseEntity<String> test(){
+        return new ResponseEntity<>("success", HttpStatus.OK);
+    }
+
 }
