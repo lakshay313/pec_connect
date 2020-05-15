@@ -12,7 +12,7 @@
             <column name="name" type="VARCHAR(255)">
                 <constraints nullable="false" unique="true"/>
             </column>
-            <column name="actions" type="JSONB"/>
+            <column name="action" type="JSONB"/>
             <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
         </createTable>
     </changeSet>

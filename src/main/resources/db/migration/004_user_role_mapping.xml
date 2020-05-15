@@ -6,6 +6,9 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
     <changeSet author="lakshay313" id="004_user_role_mapping">
         <createTable tableName="user_role_mapping">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="user_role_mapping_pkey"/>
+            </column>
             <column name="uid" type="BIGINT"/>
             <column name="role_id" type="BIGINT"/>
             <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
