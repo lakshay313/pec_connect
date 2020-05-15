@@ -7,14 +7,22 @@
     <changeSet author="lakshay313" id="001_initial_schema_01">
         <createTable tableName="identity">
 
-            <column name="id" type="BIGSERIAL">
-                <constraints primaryKey="true" primaryKeyName="user_pkey"/>
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="identity_pkey"/>
+            </column>
+            <column name="sid" type="BIGSERIAL">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column  name="first_name"  type="VARCHAR(50)"/>
+            <column  name="last_name"  type="VARCHAR(50)"/>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true" />
             </column>
             <column name="password" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
-
+            <column name="last_login" type="TIMESTAMP WITHOUT TIME ZONE"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>
