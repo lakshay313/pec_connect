@@ -15,7 +15,7 @@ import java.util.Date;
 @Entity
 @Data
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
-@TypeDef(name="jsonb-node", typeClass = JsonNodeBinaryType.class)
+@TypeDef(name = "jsonb-node", typeClass = JsonNodeBinaryType.class)
 @Table(name = "permission")
 public class Permission {
 

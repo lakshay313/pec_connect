@@ -22,7 +22,6 @@
                 <constraints nullable="false"/>
             </column>
             <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
-            <column name="last_login" type="TIMESTAMP WITHOUT TIME ZONE"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>

@@ -32,7 +32,4 @@ public class Identity {
     @CreationTimestamp
     private Date createdAt;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastLogin;
-
 }

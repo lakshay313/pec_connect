@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HealthController {
 
     @RequestMapping("/ping")
-    public ResponseEntity<String> ping(){
+    public ResponseEntity<String> ping() {
         return new ResponseEntity<>("pong", HttpStatus.OK);
     }
 
