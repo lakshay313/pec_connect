@@ -10,4 +10,5 @@
     <include file="db/migration/003_permission_schema.xml"/>
     <include file="db/migration/004_user_role_mapping.xml"/>
     <include file="db/migration/005_role_permission_mapping.xml"/>
+    <include file="db/migration/006_alter_permission.xml"/>
 </databaseChangeLog>

@@ -48,7 +48,9 @@ public class IdentityServiceImpl implements IdentityService {
 
     @Override
     public Identity createUser(Identity identityRequest) {
-        identityRepository.save(identityRequest);
+        try {
+            identityRepository.save(identityRequest);
+        }catch (Exception e){ }
         return identityRepository.findById(identityRequest.getId()).orElse(null);
     }
 

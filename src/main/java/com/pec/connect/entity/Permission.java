@@ -25,6 +25,8 @@ public class Permission {
 
     private String name;
 
+    private String resource;
+
     @Type(type = "jsonb-node")
     @Column(columnDefinition = "jsonb")
     private JsonNode action;
