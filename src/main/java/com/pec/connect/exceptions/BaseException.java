@@ -1,11 +1,12 @@
 package com.pec.connect.exceptions;
 
-import lombok.Data;
+import org.springframework.http.HttpStatus;
 
-@Data
 public abstract class BaseException extends Exception {
 
     public abstract int getErrorCode();
+
+    public abstract HttpStatus getHttpStatus();
 
     public BaseException(String message) {
         super(message);

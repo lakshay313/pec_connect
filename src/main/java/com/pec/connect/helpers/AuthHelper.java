@@ -17,10 +17,9 @@ public class AuthHelper {
     IdentityService identityService;
 
     public boolean validateToken(String accessToken) {
-        String token = new String(Base64.getDecoder().decode(accessToken));
-        String[] value = token.split(":");
-
         try {
+            String token = new String(Base64.getDecoder().decode(accessToken));
+            String[] value = token.split(":");
             if (value[0].equals(appSecret)) {
                 return identityService.verifyUser(Long.parseLong(value[1]), value[2]);
             } else {
