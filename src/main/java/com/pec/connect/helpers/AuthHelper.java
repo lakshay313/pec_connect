@@ -10,9 +10,11 @@ import java.util.Base64;
 @Component
 public class AuthHelper {
 
-    @Value("${service.app-secret}") private String appSecret;
+    @Value("${service.app-secret}")
+    private String appSecret;
 
-    @Autowired IdentityService identityService;
+    @Autowired
+    IdentityService identityService;
 
     public boolean validateToken(String accessToken) {
         String token = new String(Base64.getDecoder().decode(accessToken));

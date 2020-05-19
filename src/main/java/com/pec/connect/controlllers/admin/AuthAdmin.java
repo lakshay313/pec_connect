@@ -5,14 +5,18 @@ import com.pec.connect.entity.UserRoleMapping;
 import com.pec.connect.exceptions.ResourceNotFoundException;
 import com.pec.connect.services.AuthAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
 public class AuthAdmin {
 
-    @Autowired AuthAdminService authAdminService;
+    @Autowired
+    AuthAdminService authAdminService;
 
     @PostMapping("/role-mapping")
     public UserRoleMapping createRoleMapping(@RequestBody UserRoleMapping userRoleMapping) throws ResourceNotFoundException {

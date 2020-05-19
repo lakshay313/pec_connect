@@ -10,18 +10,19 @@ import java.util.List;
 @RestController
 public class PermissionController {
 
-    @Autowired PermissionService permissionService;
+    @Autowired
+    PermissionService permissionService;
 
     @PostMapping("/permission")
-    public Permission createRole(@RequestBody Permission permission){
+    public Permission createRole(@RequestBody Permission permission) {
         return permissionService.createRole(permission);
     }
 
     @GetMapping("/permission")
-    public List<Permission> getRoles(@RequestParam(value = "name", required = false) String name){
-        if(name != null){
+    public List<Permission> getRoles(@RequestParam(value = "name", required = false) String name) {
+        if (name != null) {
             return permissionService.getRolesByName(name);
-        }else{
+        } else {
             return permissionService.getRoles();
         }
     }

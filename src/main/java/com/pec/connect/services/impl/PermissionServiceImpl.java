@@ -11,7 +11,8 @@ import java.util.List;
 @Service
 public class PermissionServiceImpl implements PermissionService {
 
-    @Autowired PermissionRepository permissionRepository;
+    @Autowired
+    PermissionRepository permissionRepository;
 
     @Override
     public List<Permission> getRolesByName(String name) {
@@ -27,7 +28,8 @@ public class PermissionServiceImpl implements PermissionService {
     public Permission createRole(Permission permission) {
         try {
             permissionRepository.save(permission);
-        }catch (Exception e){}
+        } catch (Exception e) {
+        }
         return permissionRepository.findById(permission.getId()).orElse(null);
     }
 

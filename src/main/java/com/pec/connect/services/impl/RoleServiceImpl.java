@@ -11,7 +11,8 @@ import java.util.List;
 @Service
 public class RoleServiceImpl implements RoleService {
 
-    @Autowired RoleRepository roleRepository;
+    @Autowired
+    RoleRepository roleRepository;
 
     @Override
     public List<Role> getRolesByName(String name) {
@@ -27,7 +28,8 @@ public class RoleServiceImpl implements RoleService {
     public Role createRole(Role role) {
         try {
             roleRepository.save(role);
-        }catch (Exception e){}
+        } catch (Exception e) {
+        }
         return roleRepository.findById(role.getId()).orElse(null);
     }
 
