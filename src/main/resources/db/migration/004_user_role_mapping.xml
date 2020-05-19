@@ -4,24 +4,21 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
-    <changeSet author="lakshay313" id="001_initial_schema_01">
-        <createTable tableName="identity">
-
+    <changeSet author="lakshay313" id="004_user_role_mapping">
+        <createTable tableName="user_role_mapping">
             <column name="id" type="BIGINT" autoIncrement="true">
-                <constraints primaryKey="true" primaryKeyName="identity_pkey"/>
+                <constraints primaryKey="true" primaryKeyName="user_role_mapping_pkey"/>
             </column>
-            <column name="sid" type="BIGSERIAL">
-                <constraints nullable="false" unique="true" />
+            <column name="uid" type="BIGINT">
+                <constraints nullable="false" unique="true"/>
             </column>
-            <column  name="first_name"  type="VARCHAR(50)"/>
-            <column  name="last_name"  type="VARCHAR(50)"/>
-            <column name="email" type="VARCHAR(255)">
-                <constraints nullable="false" unique="true" />
-            </column>
-            <column name="password" type="VARCHAR(255)">
+            <column name="role_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
             <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+
         </createTable>
+        <addUniqueConstraint tableName="user_role_mapping" columnNames="uid, role_id"/>
     </changeSet>
 </databaseChangeLog>
