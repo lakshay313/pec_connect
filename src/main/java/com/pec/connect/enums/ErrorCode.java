@@ -9,7 +9,9 @@ public enum ErrorCode {
 
     AUTHENTICATION_FAILED(1),
 
-    UNAUTHORIZED(2);
+    UNAUTHORIZED(2),
+
+    MAPPING_NOT_FOUND(3);
 
     private int value;
 }

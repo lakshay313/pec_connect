@@ -10,4 +10,6 @@ public interface PermissionService {
     List<Permission> getRoles();
 
     Permission createRole(Permission permission);
+
+    Permission getPermissionById(Long permissionId);
 }

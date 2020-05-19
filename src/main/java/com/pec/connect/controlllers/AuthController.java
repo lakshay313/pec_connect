@@ -18,11 +18,9 @@ import javax.validation.Valid;
 @RestController
 public class AuthController {
 
-    @Autowired
-    IdentityService identityService;
+    @Autowired IdentityService identityService;
 
-    @Autowired
-    AuthHelper authHelper;
+    @Autowired AuthHelper authHelper;
 
     @PostMapping("/login")
     public LoginResponse login(@Valid @RequestBody LoginRequest loginRequest) throws IdentityNotFoundException {

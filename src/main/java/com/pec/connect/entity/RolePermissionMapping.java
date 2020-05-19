@@ -7,6 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -19,9 +20,11 @@ public class RolePermissionMapping {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long role_id;
+    @NotNull
+    private Long roleId;
 
-    private String permission_id;
+    @NotNull
+    private Long permissionId;
 
     @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp

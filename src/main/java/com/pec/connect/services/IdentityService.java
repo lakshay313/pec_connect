@@ -13,4 +13,6 @@ public interface IdentityService {
     Object getAccess(String token);
 
     boolean verifyUser(Long id, String email);
+
+    Identity getUserById(Long uid);
 }

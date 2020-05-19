@@ -12,4 +12,5 @@ public interface IdentityRepository extends JpaRepository<Identity, Long> {
     Optional<Identity> findByEmailAndPassword(String email, String password);
 
     Optional<Identity> findByIdAndEmail(Long id, String email);
+
 }
