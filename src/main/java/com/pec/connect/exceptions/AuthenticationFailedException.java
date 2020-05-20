@@ -2,7 +2,6 @@ package com.pec.connect.exceptions;
 
 import com.pec.connect.enums.ErrorCode;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 public class AuthenticationFailedException extends BaseException {
 
@@ -16,7 +15,7 @@ public class AuthenticationFailedException extends BaseException {
     }
 
     @Override
-    public HttpStatus getHttpStatus(){
+    public HttpStatus getHttpStatus() {
         return HttpStatus.FORBIDDEN;
     }
 }

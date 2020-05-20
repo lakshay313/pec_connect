@@ -10,4 +10,5 @@ public interface RecordService {
 
     List<Record> getAllRecords();
 
+    Record getById(Long recordId);
 }

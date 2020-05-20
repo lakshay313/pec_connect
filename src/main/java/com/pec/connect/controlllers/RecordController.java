@@ -26,4 +26,10 @@ public class RecordController {
         return recordService.getAllRecords();
     }
 
+    /*
+       TODO :
+           1) Add global search API
+           2) Add search with filters API
+     */
+
 }

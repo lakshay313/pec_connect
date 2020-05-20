@@ -29,4 +29,9 @@ public class RecordServiceImpl implements RecordService {
         return recordRepository.findAll();
     }
 
+    @Override
+    public Record getById(Long recordId) {
+        return recordRepository.findById(recordId).orElse(null);
+    }
+
 }
