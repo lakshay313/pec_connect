@@ -3,10 +3,7 @@ package com.pec.connect.controlllers;
 import com.pec.connect.entity.Record;
 import com.pec.connect.services.RecordService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,9 +19,13 @@ public class RecordController {
     }
 
     @GetMapping("/record")
-    public List<Record> getRecords() {
-        return recordService.getAllRecords();
+    public List<Record> getRecords(@RequestParam(name = "entries" ,required = false) Long numEntries) {
+        if(numEntries == null)
+            return recordService.getAllRecords();
+        else
+            return recordService.getRecords(numEntries);
     }
+
 
     /*
        TODO :

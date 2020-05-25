@@ -4,18 +4,17 @@ import com.pec.connect.dto.AuthorisationResponse;
 import com.pec.connect.dto.LoginRequest;
 import com.pec.connect.dto.LoginResponse;
 import com.pec.connect.entity.Identity;
+import com.pec.connect.entity.Record;
 import com.pec.connect.exceptions.AuthenticationFailedException;
 import com.pec.connect.exceptions.IdentityNotFoundException;
 import com.pec.connect.helpers.AuthHelper;
 import com.pec.connect.services.IdentityService;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 public class AuthController {

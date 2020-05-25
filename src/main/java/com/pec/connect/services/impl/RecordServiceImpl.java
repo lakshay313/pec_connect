@@ -20,18 +20,22 @@ public class RecordServiceImpl implements RecordService {
             recordRepository.save(record);
         } catch (Exception ignore) {
         }
-
         return recordRepository.findById(record.getId()).orElse(null);
     }
 
     @Override
     public List<Record> getAllRecords() {
-        return recordRepository.findAll();
+        return recordRepository.getAll();
     }
 
     @Override
     public Record getById(Long recordId) {
         return recordRepository.findById(recordId).orElse(null);
+    }
+
+    @Override
+    public List<Record> getRecords(Long numEntries) {
+        return recordRepository.getRecentRecords(numEntries);
     }
 
 }
