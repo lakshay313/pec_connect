@@ -27,6 +27,12 @@ public class RecordController {
     }
 
 
+    @GetMapping("/record/search")
+    public List<Record> searchRecords(@RequestParam(name = "key") String key) {
+        return recordService.getRecordsByKey(key);
+    }
+
+
     /*
        TODO :
            1) Add global search API

@@ -13,4 +13,6 @@ public interface RecordService {
     Record getById(Long recordId);
 
     List<Record> getRecords(Long numEntries);
+
+    List<Record> getRecordsByKey(String key);
 }

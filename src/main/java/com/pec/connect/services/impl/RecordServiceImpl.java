@@ -38,4 +38,9 @@ public class RecordServiceImpl implements RecordService {
         return recordRepository.getRecentRecords(numEntries);
     }
 
+    @Override
+    public List<Record> getRecordsByKey(String key) {
+        return recordRepository.getRecordsByKey(key.toLowerCase());
+    }
+
 }

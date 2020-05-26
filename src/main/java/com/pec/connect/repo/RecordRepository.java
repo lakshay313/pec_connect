@@ -18,4 +18,10 @@ public interface RecordRepository extends JpaRepository<Record, Long> {
             value = "select * from record order by posted_at desc limit ?1 ")
     List<Record> getRecentRecords(Long numEntries);
 
+    @Query(nativeQuery = true,
+            value = "select * from record where LOWER(title) like %?1% OR LOWER(category) like %?1% " +
+                    " OR LOWER(specialisation) like %?1% OR LOWER(record.type) like %?1% OR LOWER(posted_by) " +
+                    " LIKE %?1% order by posted_at desc")
+    List<Record> getRecordsByKey(String key);
+
 }
