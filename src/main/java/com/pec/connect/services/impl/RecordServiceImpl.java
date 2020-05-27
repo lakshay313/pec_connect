@@ -3,9 +3,11 @@ package com.pec.connect.services.impl;
 import com.pec.connect.entity.Record;
 import com.pec.connect.repo.RecordRepository;
 import com.pec.connect.services.RecordService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -45,8 +47,21 @@ public class RecordServiceImpl implements RecordService {
 
     @Override
     public List<Record> getRecordsByParams(String key, String type, String category, String specialisation) {
-        //TODO
-        return null;
+        if(StringUtils.isBlank(key)){
+           key= "";
+        }
+        if(StringUtils.isBlank(type)){
+            type = "";
+        }
+        if(StringUtils.isBlank(category)){
+            category = "";
+        }
+        if(StringUtils.isBlank(specialisation)) {
+            specialisation = "";
+        }
+
+        return recordRepository.getRecordsByParams(key.toLowerCase(),type.toLowerCase(),
+                category.toLowerCase(),specialisation.toLowerCase());
     }
 
 
