@@ -12,7 +12,8 @@ import java.util.List;
 @RestController
 public class RecordHistoryController {
 
-    @Autowired RecordHistoryService recordHistoryService;
+    @Autowired
+    RecordHistoryService recordHistoryService;
 
     @GetMapping("/record/history")
     public List<Record> getLastAccessedRecords(@RequestParam(name = "uid") Long uid) throws IdentityNotFoundException {
@@ -20,10 +21,9 @@ public class RecordHistoryController {
     }
 
     @PostMapping("/record/history")
-    public List<Record> createLastAccessedRecord(@RequestBody RecordAccessHistory recordAccessHistory) throws IdentityNotFoundException{
+    public List<Record> createLastAccessedRecord(@RequestBody RecordAccessHistory recordAccessHistory) throws IdentityNotFoundException {
         return recordHistoryService.createLastAccessedRecord(recordAccessHistory);
     }
-
 
 
 }

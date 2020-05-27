@@ -10,6 +10,6 @@ public interface RecordHistoryService {
 
     List<Record> getLastAccessedRecords(Long uid) throws IdentityNotFoundException;
 
-    List<Record>createLastAccessedRecord(RecordAccessHistory recordAccessHistory) throws IdentityNotFoundException;
+    List<Record> createLastAccessedRecord(RecordAccessHistory recordAccessHistory) throws IdentityNotFoundException;
 
 }

@@ -43,4 +43,11 @@ public class RecordServiceImpl implements RecordService {
         return recordRepository.getRecordsByKey(key.toLowerCase());
     }
 
+    @Override
+    public List<Record> getRecordsByParams(String key, String type, String category, String specialisation) {
+        //TODO
+        return null;
+    }
+
+
 }

@@ -19,8 +19,8 @@ public class RecordController {
     }
 
     @GetMapping("/record")
-    public List<Record> getRecords(@RequestParam(name = "entries" ,required = false) Long numEntries) {
-        if(numEntries == null)
+    public List<Record> getRecords(@RequestParam(name = "entries", required = false) Long numEntries) {
+        if (numEntries == null)
             return recordService.getAllRecords();
         else
             return recordService.getRecords(numEntries);
@@ -28,15 +28,17 @@ public class RecordController {
 
 
     @GetMapping("/record/search")
-    public List<Record> searchRecords(@RequestParam(name = "key") String key) {
+    public List<Record> getSearchRecords(@RequestParam(name = "key") String key) {
         return recordService.getRecordsByKey(key);
     }
 
-
-    /*
-       TODO :
-           1) Add global search API
-           2) Add search with filters API
-     */
+    @GetMapping("/record/search/filter")
+    public List<Record> getSearchRecordsByParam(@RequestParam(value = "key", required = false) String key,
+                                                @RequestParam(value = "type", required = false) String type,
+                                                @RequestParam(value = "category", required = false) String category,
+                                                @RequestParam(value = "specialisation", required = false) String specialisation
+    ) {
+        return recordService.getRecordsByParams(key, type, category, specialisation);
+    }
 
 }

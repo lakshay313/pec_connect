@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface RecordHistoryRepository extends JpaRepository<RecordAccessHistory,Long> {
+public interface RecordHistoryRepository extends JpaRepository<RecordAccessHistory, Long> {
 
     @Query(nativeQuery = true,
             value = "select * from record_access_history where id in(select max(id) from record_access_history " +

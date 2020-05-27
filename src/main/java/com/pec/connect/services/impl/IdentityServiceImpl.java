@@ -1,7 +1,6 @@
 package com.pec.connect.services.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pec.connect.dto.Access;
 import com.pec.connect.dto.AuthorisationResponse;
 import com.pec.connect.dto.LoginResponse;
 import com.pec.connect.entity.*;
@@ -18,10 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class IdentityServiceImpl implements IdentityService {
@@ -103,11 +99,11 @@ public class IdentityServiceImpl implements IdentityService {
         List<RolePermissionMapping> rolePermissionMappings = rolePermissionMappingRepository
                 .findAllByRoleId(userRoleMapping.getRoleId());
 
-        List<Access> access = new ArrayList<>();
+        Map<String, Object> map = new HashMap<>();
 
         rolePermissionMappings.forEach(rolePermissionMapping -> {
             Permission permission = permissionService.getPermissionById(rolePermissionMapping.getPermissionId());
-            access.add(mapper.convertValue(permission, Access.class));
+            map.put(permission.getResource(), permission.getAction());
         });
 
         AuthorisationResponse response = new AuthorisationResponse().toBuilder()
@@ -116,7 +112,7 @@ public class IdentityServiceImpl implements IdentityService {
                 .firstName(identity.getFirstName())
                 .lastName(identity.getLastName())
                 .role(role.getName())
-                .permissions(access)
+                .permissions(map)
                 .build();
 
         return response;
