@@ -17,31 +17,49 @@ import java.util.List;
 @Service
 public class RecordHistoryServiceImpl implements RecordHistoryService {
 
-    @Autowired RecordHistoryRepository recordHistoryRepository;
+    @Autowired
+    RecordHistoryRepository recordHistoryRepository;
 
-    @Autowired IdentityService identityService;
+    @Autowired
+    IdentityService identityService;
 
-    @Autowired RecordService recordService;
+    @Autowired
+    RecordService recordService;
 
-    @Override
-    public List<Record> getLastAccessedRecords(Long uid) throws IdentityNotFoundException{
+    private List<RecordAccessHistory> getRecordHistory(Long uid) throws IdentityNotFoundException {
         Identity identity = identityService.getUserById(uid);
-        if(identity == null){
+        if (identity == null) {
             throw new IdentityNotFoundException("Invalid User Id");
         }
-        List<RecordAccessHistory> recordHistories = recordHistoryRepository.findAllByUserId(uid);
+        return recordHistoryRepository.getAllByUserId(uid);
+    }
+
+    @Override
+    public List<Record> getLastAccessedRecords(Long uid) throws IdentityNotFoundException {
+        List<RecordAccessHistory> recordHistories = getRecordHistory(uid);
         List<Record> response = new ArrayList<>();
 
-        recordHistories.forEach( recordHistory ->{
+        recordHistories.forEach(recordHistory -> {
             Record record = recordService.getById(recordHistory.getRecordId());
-            if(record == null){
+            if (record == null) {
                 recordHistoryRepository.deleteById(recordHistory.getId());
-            }else{
+            } else {
                 response.add(record);
             }
         });
         return response;
 
     }
+
+    @Override
+    public List<Record> createLastAccessedRecord(RecordAccessHistory recordAccessHistory) throws IdentityNotFoundException {
+        RecordAccessHistory recordHistory = recordHistoryRepository.findTopByUserIdAndRecordId(recordAccessHistory.getUserId(), recordAccessHistory.getRecordId());
+        if (recordHistory != null) {
+            recordHistoryRepository.deleteById(recordHistory.getId());
+        }
+        recordHistoryRepository.save(recordAccessHistory);
+        return getLastAccessedRecords(recordAccessHistory.getUserId());
+    }
+
 
 }

@@ -7,7 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.util.Map;
 
 
 @Data
@@ -27,7 +27,7 @@ public class AuthorisationResponse {
 
     private String role;
 
-    private List<Access> permissions;
+    private Map<String, Object> permissions;
 
 
 }

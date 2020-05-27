@@ -38,7 +38,6 @@ public class AuthController {
 
     @PostMapping("/access")
     public AuthorisationResponse getAccess(@RequestHeader(name = "access_token") String token) throws AuthenticationFailedException {
-        JSONObject response;
         if (authHelper.validateToken(token)) {
             return identityService.getAccess(token);
         } else {
